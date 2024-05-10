@@ -1,6 +1,6 @@
 # Terminal Setup ( Ubuntu )
-![Sample Image 1](./static/terminal-1.png)
-![Sample Image 2](./static/terminal-2.png)
+![Shell Initialized](./static/terminal-1.png "Shell Initialized")
+![Sample Image 2](./static/terminal-2.png "Multiple Modules")
 
 ## Apparatus
 - shell - Fish - https://fishshell.com/
