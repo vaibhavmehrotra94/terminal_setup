@@ -1,5 +1,6 @@
 # Terminal Setup ( Ubuntu )
-![Sample Image](./static/terminal_screenshot.png)
+![Sample Image 1](./static/terminal-1.png)
+![Sample Image 2](./static/terminal-2.png)
 
 ## Apparatus
 - shell - Fish - https://fishshell.com/
