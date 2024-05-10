@@ -9,10 +9,12 @@
   - config_file - starship.toml
 
  ## Reciepe
- Install needed packages
- `sudo apt-get install -y cowsay fortune fortunes-min`
 
- 1. Install & setup fish shell ( Remove default greeting )
+ 1. Install initial dependencies
+ ```
+ sudo apt-get install -y cowsay fortune fortunes-min
+ ```
+ 2. Install & setup fish shell ( Remove default greeting )
  ```
  sudo apt-add-repository ppa:fish-shell/release-3
  sudo apt update
