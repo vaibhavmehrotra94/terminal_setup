@@ -1,3 +1,5 @@
+# file location -> ~/.config/fish/config.fish
+
 function random_quote
   set animal (random choice {default,dragon,dragon-and-cow,elephant,moose,stegosaurus,tux,vader})
   fortune -s | cowsay -f $animal
