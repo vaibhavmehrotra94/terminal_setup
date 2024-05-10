@@ -1,0 +1,380 @@
+# Get editor completions based on the config schema
+"$schema" = 'https://starship.rs/config-schema.json'
+
+right_format = """
+"""
+
+format = """
+$sudo\
+$username\
+$hostname\
+$directory\
+$localip\
+$shlvl\
+$singularity\
+$kubernetes\
+$vcsh\
+$fossil_branch\
+${custom.git_server}\
+$git_branch\
+$git_commit\
+$git_state\
+$git_metrics\
+$git_status\
+$env_var\
+$hg_branch\
+$pijul_channel\
+$docker_context\
+$package\
+$c\
+$cmake\
+$cobol\
+$daml\
+$dart\
+$deno\
+$dotnet\
+$elixir\
+$elm\
+$erlang\
+$fennel\
+$golang\
+$guix_shell\
+$haskell\
+$haxe\
+$helm\
+$java\
+$julia\
+$kotlin\
+$gradle\
+$lua\
+$nim\
+$nodejs\
+$ocaml\
+$opa\
+$perl\
+$php\
+$pulumi\
+$purescript\
+$python\
+$raku\
+$rlang\
+$red\
+$ruby\
+$rust\
+$scala\
+$swift\
+$terraform\
+$vlang\
+$vagrant\
+$zig\
+$buf\
+$nix_shell\
+$conda\
+$meson\
+$spack\
+$aws\
+$gcloud\
+$openstack\
+$azure\
+$crystal\
+$custom\
+$fill\
+$cmd_duration\
+$memory_usage\
+$battery\
+$command_timeout\
+$time
+$jobs\
+$status\
+$os\
+$container\
+$shell\
+$character"""
+
+################################################################################
+## Custom Commands
+################################################################################
+
+
+################################################################################
+## Shell
+################################################################################
+[fill]
+symbol = ' '
+
+[battery]
+full_symbol = "󱈑"  # nf-md-battery_heart_variant - \udb84\ude11
+# charging_symbol = "🔌"
+charging_symbol = " 󱟦"  # nf-md-battery_plus - \udb85\udfe6
+discharging_symbol = " 󱟤" # nf-md-battery_minus - \udb85\udfe4
+disabled = false
+
+[[battery.display]]
+threshold = 30
+style = "bold red"
+
+[[battery.display]]
+threshold = 70
+style = "bold yellow"
+
+[[battery.display]]
+threshold = 30
+style = "bold green"
+
+
+[cmd_duration]
+min_time = 10_000  # Show command duration over 10,000 milliseconds (=10 sec)
+format = '\[[⏱ $duration]($style)\]'
+style = 'yellow'
+
+[memory_usage]
+format = '\[$symbol[${ram}( | ${swap_pct})]($style)\]'
+threshold = 0
+style = "bold dimmed white"
+disabled = false
+symbol = '  ' # nf-fa-memory - \uefc5
+
+[time]
+time_format = "%I:%M" #default - "%T"
+format = "🕙$time($style) "
+style = "bright-white"
+disabled = false
+
+[username]
+format = '\[[$user]($style)\]'
+style_user = "bold dimmed blue"
+show_always = false
+
+[hostname]
+ssh_only = false
+format = "<[$hostname]($style)>"
+trim_at = "-"
+style = "bold dimmed white"
+disabled = true
+
+[directory]
+truncation_length = 5
+format = "[$path]($style)[$lock_symbol]($lock_style) "
+truncate_to_repo = false
+style = "bold #4F8FE3"
+
+[directory.substitutions]
+"Documents" = "󱔗 " #nf-md-file_document_multiple - \udb85\udd17
+"Downloads" = " "
+"Music" = " "
+"Pictures" = " "
+
+[package]
+format = '\[[$symbol$version]($style)\]'
+disabled = true
+
+################################################################################
+## GIT
+################################################################################
+[git_branch]
+format = '\[[$symbol$branch]($style)\]'
+symbol = ' ' # nf-oct-git_branch - \uf418
+style = "bold #E84E31"
+
+################################################################################
+## In Use Languages & Tools
+################################################################################
+[nodejs]
+format = '\[[$symbol($version)]($style)\]'
+not_capable_style = 'bold red'
+version_format = 'v${major}.${minor}'
+disabled = false
+symbol = '󰎙 '# nf-dev-nodejs_small - \ue718
+
+[kubernetes]
+format = '\[[$symbol $context]($style)\]'
+style = 'bold purple'
+disabled = false
+symbol = '󱃾' # nf-md-kubernetes - \udb84\udcfe
+
+[env_var.NODE_ENV]
+variable = 'NODE_ENV'
+format = '[($env_value)]($style)'
+
+[character]
+success_symbol = '[❯](bold green) '
+error_symbol = '[❯](bold red) '
+
+[terraform]
+# format = '\[[$symbol$workspace]($style)\]'
+format = '\[[$symbol$version]($style)\]'
+version_format = 'v${major}.${minor}'
+symbol = '󱁢 ' # nf-md-terraform - \udb84\udc62
+
+[sudo]
+format = '[$symbol]($style)'
+disabled = false
+symbol = ' ' # nf-fa-skull - \uee15
+style = 'bold red'
+
+
+################################################################################
+## Languages & Tools
+################################################################################
+[aws]
+format = '\[[$symbol($profile)(\($region\))(\[$duration\])]($style)\]'
+symbol = '󰅟 '
+style = "yellow"
+disabled = true
+
+[bun]
+format = '\[[$symbol($version)]($style)\]'
+
+[c]
+format = '\[[$symbol($version(-$name))]($style)\]'
+
+[cmake]
+format = '\[[$symbol($version)]($style)\]'
+
+[cobol]
+format = '\[[$symbol($version)]($style)\]'
+
+[conda]
+format = '\[[$symbol$environment]($style)\]'
+
+[crystal]
+format = '\[[$symbol($version)]($style)\]'
+
+[daml]
+format = '\[[$symbol($version)]($style)\]'
+
+[dart]
+format = '\[[$symbol($version)]($style)\]'
+
+[deno]
+format = '\[[$symbol($version)]($style)\]'
+
+[docker_context]
+format = '\[[$symbol$context]($style)\]'
+
+[dotnet]
+format = '\[[$symbol($version)(🎯 $tfm)]($style)\]'
+
+[elixir]
+format = '\[[$symbol($version \(OTP $otp_version\))]($style)\]'
+
+[elm]
+format = '\[[$symbol($version)]($style)\]'
+
+[erlang]
+format = '\[[$symbol($version)]($style)\]'
+
+[fennel]
+format = '\[[$symbol($version)]($style)\]'
+
+[fossil_branch]
+format = '\[[$symbol$branch]($style)\]'
+
+[gcloud]
+format = '\[[$symbol$account(@$domain)(\($region\))]($style)\]'
+
+[golang]
+format = '\[[$symbol($version)]($style)\]'
+
+[gradle]
+format = '\[[$symbol($version)]($style)\]'
+
+[guix_shell]
+format = '\[[$symbol]($style)\]'
+# disabled = true
+
+[haskell]
+format = '\[[$symbol($version)]($style)\]'
+
+[haxe]
+format = '\[[$symbol($version)]($style)\]'
+
+[helm]
+format = '\[[$symbol($version)]($style)\]'
+# disabled = true
+
+[hg_branch]
+format = '\[[$symbol$branch]($style)\]'
+
+[java]
+format = '\[[$symbol($version)]($style)\]'
+
+[julia]
+format = '\[[$symbol($version)]($style)\]'
+
+[kotlin]
+format = '\[[$symbol($version)]($style)\]'
+
+[lua]
+format = '\[[$symbol($version)]($style)\]'
+
+[meson]
+format = '\[[$symbol$project]($style)\]'
+
+[nim]
+format = '\[[$symbol($version)]($style)\]'
+
+[nix_shell]
+format = '\[[$symbol$state( \($name\))]($style)\]'
+
+[ocaml]
+format = '\[[$symbol($version)(\($switch_indicator$switch_name\))]($style)\]'
+
+[opa]
+format = '\[[$symbol($version)]($style)\]'
+
+[openstack]
+format = '\[[$symbol$cloud(\($project\))]($style)\]'
+
+[os]
+format = '\[[$symbol]($style)\]'
+
+[perl]
+format = '\[[$symbol($version)]($style)\]'
+
+[php]
+format = '\[[$symbol($version)]($style)\]'
+
+[pijul_channel]
+format = '\[[$symbol$channel]($style)\]'
+
+[pulumi]
+format = '\[[$symbol$stack]($style)\]'
+
+[purescript]
+format = '\[[$symbol($version)]($style)\]'
+
+[python]
+format = '\[[${symbol}${pyenv_prefix}(${version})(\($virtualenv\))]($style)\]'
+style = "bold green"
+
+[raku]
+format = '\[[$symbol($version-$vm_version)]($style)\]'
+
+[red]
+format = '\[[$symbol($version)]($style)\]'
+
+[ruby]
+format = '\[[$symbol($version)]($style)\]'
+
+[rust]
+format = '\[[$symbol($version)]($style)\]'
+style = "bold green"
+
+[scala]
+format = '\[[$symbol($version)]($style)\]'
+
+[spack]
+format = '\[[$symbol$environment]($style)\]'
+
+[swift]
+format = '\[[$symbol($version)]($style)\]'
+
+[vagrant]
+format = '\[[$symbol($version)]($style)\]'
+
+[vlang]
+format = '\[[$symbol($version)]($style)\]'
+
+[zig]
+format = '\[[$symbol($version)]($style)\]'
