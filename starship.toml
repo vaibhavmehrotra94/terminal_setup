@@ -17,10 +17,6 @@ $vcsh\
 $fossil_branch\
 ${custom.git_server}\
 $git_branch\
-$git_commit\
-$git_state\
-$git_metrics\
-$git_status\
 $env_var\
 $hg_branch\
 $pijul_channel\
@@ -103,7 +99,7 @@ $character"""
 symbol = ' '
 
 [battery]
-full_symbol = "󱈑"  # nf-md-battery_heart_variant - \udb84\ude11
+full_symbol = " 󱈑"  # nf-md-battery_heart_variant - \udb84\ude11
 # charging_symbol = "🔌"
 charging_symbol = " 󱟦"  # nf-md-battery_plus - \udb85\udfe6
 discharging_symbol = " 󱟤" # nf-md-battery_minus - \udb85\udfe4
@@ -111,15 +107,15 @@ disabled = false
 
 [[battery.display]]
 threshold = 30
-style = "bold red"
+style = "bold #780707"
 
 [[battery.display]]
 threshold = 70
-style = "bold yellow"
+style = "bold #b5ad0d"
 
 [[battery.display]]
 threshold = 100
-style = "bold green"
+style = "bold #1c7514"
 
 
 [cmd_duration]
@@ -153,7 +149,8 @@ style = "bold dimmed white"
 disabled = true
 
 [directory]
-truncation_length = 5
+truncation_length = 3
+truncation_symbol = ".."
 format = "[$path]($style)[$lock_symbol]($lock_style) "
 truncate_to_repo = false
 style = "bold #4F8FE3"
@@ -174,7 +171,7 @@ disabled = true
 [git_branch]
 format = '\[[$symbol$branch]($style)\]'
 symbol = ' ' # nf-oct-git_branch - \uf418
-style = "bold #E84E31"
+style = "bold #7a3a0f" #E84E31
 
 ################################################################################
 ## In Use Languages & Tools
@@ -182,13 +179,14 @@ style = "bold #E84E31"
 [nodejs]
 format = '\[[$symbol($version)]($style)\]'
 not_capable_style = 'bold red'
+style = "bold #1c7514"
 version_format = 'v${major}.${minor}'
 disabled = false
 symbol = '󰎙 '# nf-dev-nodejs_small - \ue718
 
 [kubernetes]
 format = '\[[$symbol $context]($style)\]'
-style = 'bold purple'
+style = 'bold #6c2f7a'
 disabled = false
 symbol = '󱃾' # nf-md-kubernetes - \udb84\udcfe
 
