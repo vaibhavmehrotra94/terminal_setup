@@ -25,6 +25,7 @@
  set -U fish_greeting
  ```
  2. Install Nerd Fonts
+ > For WSL2( Windows 11 ) fonts needs to be installed on Windows for icons and font to be displayed properly on terminal. This covers installation for Ubuntu.
  ```
  git clone --depth 1 git@github.com:ryanoasis/nerd-fonts.git
  cd nerd-fonts
@@ -34,5 +35,4 @@
  ```
  curl -sS https://starship.rs/install.sh | sh
  ```
- 
  
