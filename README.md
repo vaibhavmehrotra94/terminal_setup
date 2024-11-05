@@ -15,7 +15,7 @@
  ```
  sudo apt-get install -y cowsay fortune fortunes-min
  ```
- 2. Install & setup fish shell ( Remove default greeting )
+ 2. Install & setup fish shell along with nvm ( Remove default greeting )
  ```
  sudo apt-add-repository ppa:fish-shell/release-3
  sudo apt update
@@ -23,15 +23,17 @@
  echo /usr/local/bin/fish | sudo tee -a /etc/shells
  chsh -s /usr/local/bin/fish
  set -U fish_greeting
+ curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher
+ fisher install jorgebucaran/nvm.fish
  ```
- 2. Install Nerd Fonts
+ 3. Install Nerd Fonts
  > For WSL2( Windows 11 ) fonts needs to be installed on Windows for icons and font to be displayed properly on terminal. This covers installation for Ubuntu.
  ```
  git clone --depth 1 git@github.com:ryanoasis/nerd-fonts.git
  cd nerd-fonts
  bash ./install.sh
  ```
- 3. Install Startship
+ 4. Install Startship
  ```
  curl -sS https://starship.rs/install.sh | sh
  ```
